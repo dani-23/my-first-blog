@@ -6,9 +6,14 @@ from django.shortcuts import redirect
 from django.contrib import messages
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    
-    return render(request, 'blog/post_list.html', {'posts':posts})
+    posts = Post.objects.all()
+    search_term=''
+
+    if 'search' in request.GET:
+        search_term = request.GET['search']
+        posts = posts.filter(title__icontains = search_term)|posts.filter(text__icontains = search_term)
+
+    return render(request, 'blog/post_list.html', {'posts': posts}, {'search_term':search_term})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -48,4 +53,5 @@ def confirm_delete(request, pk):
         post.delete()
         messages.success(request, "This has been deleted")
         return redirect('post_list')
-    return render(request, 'confirm_delete.html', {'post':post})
+    return render(request, 'blog/confirm_delete.html', {'post':post})
+
