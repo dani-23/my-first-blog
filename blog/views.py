@@ -4,16 +4,24 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.db.models import Q
 
 def post_list(request):
-    posts = Post.objects.all()
-    search_term=''
 
-    if 'search' in request.GET:
-        search_term = request.GET['search']
-        posts = posts.filter(title__icontains = search_term)|posts.filter(text__icontains = search_term)
+    results = Post.objects.all()
+    
+    if request.method == 'GET':
+        query= request.GET.get('search')
+        submitbutton = request.GET.get('submit')
+        
+        if query is not None:
+            lookups= Q(title__icontains=query) | Q(text__icontains=query)
+            results= Post.objects.filter(lookups).distinct()
+           
 
-    return render(request, 'blog/post_list.html', {'posts': posts}, {'search_term':search_term})
+    context = {'submitbutton': submitbutton, 'results': results}
+
+    return render (request, 'blog/post_list.html', context)
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)

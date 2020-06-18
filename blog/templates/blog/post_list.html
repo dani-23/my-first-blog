@@ -1,14 +1,25 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div>
-        <form class="form-inline my-2 my-lg-1">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name = "search" value={{request.GET.search}}>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="form-inline my-2 my-lg-1">
+        <form method = "GET" value={{request.GET.search}}>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" name = "search" value={{request.GET.search}}>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search</button>
         </form>
     </div>
 
-    {% for post in posts %}
+   <div class = "padding">
+       {% if submitbutton == "Search" and request.GET.search != ''%}
+            {% if results %}
+                <h2>Results for "<b>{{request.GET.search}}": </b></h2>
+            {% else %}
+                <p>No search results for: "<b>{{request.GET.search}}"</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+
+    {% for post in results %}
         <div class="post">
             <div class="date">
                 {{ post.published_date }}
