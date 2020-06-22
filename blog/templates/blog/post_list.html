@@ -8,6 +8,8 @@
         </form>
     </div>
 
+    <hr>
+
    <div class = "padding">
        {% if submitbutton == "Search" and request.GET.search != ''%}
             {% if results %}
@@ -26,6 +28,7 @@
             </div>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
+            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
     {% endfor %}
 {% endblock %}

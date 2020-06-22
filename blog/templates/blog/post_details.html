@@ -16,7 +16,56 @@
             </div>
         {% endif %}
         
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+
+        <div>
+            <div class = "inline_stuff">
+                <div class = "post_title"> 
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                </div>
+            </div>
+            
+            <div class = "inline_stuff">
+                <div class = "author">
+                    <p>@{{ post.author }}</p>
+                </div>
+            </div>
+        </div>
+           
+        <div class= "post_text">
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        
     </div>
+    
+    <hr>
+
+    <h1>Comments: </h1>
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                {% if not comment.approved_comment %}
+                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                {% endif %}
+            </div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+        {% endif %}
+    {% empty %}
+        <p>No comments here yet!</p>
+    {% endfor %}
+
+    <hr>
+
+
+    <h1>New comment</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
 {% endblock %}

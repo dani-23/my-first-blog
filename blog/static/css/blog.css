@@ -53,3 +53,26 @@ h1, h2, h3, h4 {
 .padding{
     margin-bottom: 20px;
 }
+
+.author{
+    position: absolute;
+    margin-right: 20px;
+    color: #38A1F3;
+}
+
+.post_title{
+    position: relative;
+}
+
+.inline_stuff {
+    display: inline-block;
+
+}
+
+.post_text{
+    margin-top: 10px;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
