@@ -82,5 +82,11 @@ def comment_approve(request, pk):
 
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
-    comment.delete()
-    return redirect('post_detail', pk=comment.post.pk)
+    aux = comment.post.pk 
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, "This has been deleted")
+        return redirect ('post_detail', pk=comment.post.pk)
+    
+    context={'comment': comment, 'aux': aux}
+    return render(request, 'blog/comment_remove.html', context)
