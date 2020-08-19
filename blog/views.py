@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.http import Http404  
 
 def post_list(request):
 
@@ -75,24 +76,36 @@ def confirm_delete(request, pk):
     post = get_object_or_404(Post, pk =pk)
     if request.method == "POST":
         post.delete()
-        messages.success(request, "This has been deleted")
+        messages.success(request, "The post has been deleted")
         return redirect('post_list')
     return render(request, 'blog/confirm_delete.html', {'post':post})
 
 @login_required
 def comment_approve(request, pk):
+    current_user = request.user
     comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
+    if current_user.is_superuser:
+        comment.approve()
+    else:
+        raise Http404 
     return redirect('post_detail', pk=comment.post.pk)
 
 @login_required
 def comment_remove(request, pk):
+    current_user = request.user
     comment = get_object_or_404(Comment, pk=pk)
     aux = comment.post.pk 
-    if request.method == "POST":
-        comment.delete()
-        messages.success(request, "This has been deleted")
-        return redirect ('post_detail', pk=comment.post.pk)
-    
+    if current_user.username == comment.author or current_user.is_superuser:
+        if request.method == "POST":
+            comment.delete()
+            messages.success(request, "The comment has been deleted")
+            return redirect ('post_detail', pk=comment.post.pk)
+    else: 
+        raise Http404
     context={'comment': comment, 'aux': aux}
     return render(request, 'blog/comment_remove.html', context)
+
+@login_required
+def profile_page(request):
+    current_user = request.user
+    return render(request, 'blog/profile_page.html', {'current_user': current_user})

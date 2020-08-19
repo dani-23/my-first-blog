@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Your profile</h2>
+    <ul>
+        <li><p>{{current_user.username}}</p></li>
+        <li><p>{{current_user.email}}</p></li>
+    </ul>
+{% endblock %}
