@@ -10,6 +10,7 @@ urlpatterns = [
     path('post/delete/<int:pk>/', views.confirm_delete, name='confirm_delete'),
     path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
-    path('account/profile/', views.profile_page, name='profile_page',)
+    path('account/profile/', views.profile_page, name='profile_page'),
+    path('account/profile/delele', views.delete_user, name = 'delete_user'),
 ]
 

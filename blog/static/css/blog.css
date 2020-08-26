@@ -1,10 +1,9 @@
 header {
     background-color: #24252A;
     height: 70px;
-    display: grid;
-    grid-template-columns: 60px auto 550px;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
     padding: 0 20px;
 }
 
@@ -52,8 +51,7 @@ header img {
 }
 
 .login__button {
-    margin-left: 250px;
-    padding: 9px 25px;
+    padding: 7px 20px;
     background-color: rgba(0,136,169,1);
     border:none;
     border-radius: 50px;

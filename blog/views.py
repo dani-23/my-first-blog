@@ -109,3 +109,14 @@ def comment_remove(request, pk):
 def profile_page(request):
     current_user = request.user
     return render(request, 'blog/profile_page.html', {'current_user': current_user})
+
+@login_required
+def delete_user(request):
+    current_user = request.user
+    if request.method == "POST":
+        current_user.is_active = False
+        current_user.save()
+        messages.success(request, "The user has been deleted!")
+        return redirect('post_list')
+    return render(request, 'blog/confirm_user_delete.html', {"current_user": current_user})
+

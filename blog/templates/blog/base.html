@@ -17,30 +17,30 @@
         {% endif %}
 
         <header>
-            <a class = "logo" href="/">
-                <div>
+            <div class = "item">
+                <a class = "logo" href="/">
                     <img src = "{% static 'images/privacy.png' %}"></ing>
-                </div>
-            </a>
-            
-            {% if user.is_authenticated %}
-                <div></div>
-            {% endif %}
+                </a>
+            </div> 
 
-            <nav>
+            <!--{% if user.is_authenticated %}
+                <div></div>
+            {% endif %} -->
+
+            <nav class = "item">
                 <ul class = "nav__links">
                     {% if user.is_authenticated %}
-                        <li><a href = "{% url 'post_new' %}">New post</a></li>
-                        <li><a href = "{% url 'profile_page' %}">{{user.username}}</a></li>
+                        <li><a href = "{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span> New post</a></li>
+                        <li><a href = "{% url 'profile_page' %}"><span class="glyphicon glyphicon-user"></span> {{user.username}}</a></li>
                         <li><a href = "{% url 'logout' %}"><button class = 'logout__button'>Logout</button></a></li>
                     {% endif %}
                 </ul>
             </nav>
-
             {% if not user.is_authenticated %}
-                <a href="{% url 'login' %}"><button class = "login__button" >Login</button></a>
+                <div class = "item">
+                    <a href="{% url 'login' %}"><button class = "login__button" >Login</button></a>
+                </div>
             {% endif %}
-
         </header>
 
         <div class="content container">
