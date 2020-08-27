@@ -10,7 +10,7 @@ header {
 
 header li, header a {
     font-family: 'Arvo';
-    font-size: 24px; 
+    font-size: 1.5vw; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -57,7 +57,7 @@ header img {
     border-radius: 50px;
     color: black;
     font-family: 'Arvo';
-    font-size: 24px; 
+    font-size: 1.5vw; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -74,7 +74,7 @@ header img {
     border-radius: 50px;
     color: black;
     font-family: 'Arvo';
-    font-size: 24px; 
+    font-size: 1.5vw; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -98,7 +98,7 @@ header button:focus{
 
 h1, h2, h3, h4 {
     font-family: 'Arvo';
-    font-size: 24px; 
+    font-size: 1.5vw; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
