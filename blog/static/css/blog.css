@@ -7,10 +7,9 @@ header {
     padding: 0 20px;
 }
 
-
 header li, header a {
     font-family: 'Arvo';
-    font-size: 1.5vw; 
+    font-size: 24px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -57,7 +56,7 @@ header img {
     border-radius: 50px;
     color: black;
     font-family: 'Arvo';
-    font-size: 1.5vw; 
+    font-size: 24px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -67,6 +66,7 @@ header img {
     transition: all 0.3s ease 0s;
 }
 
+
 .logout__button{
     padding: 7px 20px;
     background-color: rgba(0,136,169,1);
@@ -74,7 +74,7 @@ header img {
     border-radius: 50px;
     color: black;
     font-family: 'Arvo';
-    font-size: 1.5vw; 
+    font-size: 24px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -93,12 +93,12 @@ header button:focus{
 }
 .content {
     margin-top: 20px;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 h1, h2, h3, h4 {
     font-family: 'Arvo';
-    font-size: 1.5vw; 
+    font-size: 24px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 700; 
@@ -156,11 +156,53 @@ h1, h2, h3, h4 {
 }
 
 hr{
-    border: 0;
+  border: 0;
   clear:both;
   display:block;
   width: 97%;               
   background-color:#352f2f;
   height: 1px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.search__button{
+    border: none;
+}
+
+.search__placeholder{
+    width:50%;
+    border-radius:20px;
+}
+
+@media only screen and (max-width:500px){
+    h1, h2, h3, h4{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    header li, header a{
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .login__button, .logout__button{
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 10px; 
+        line-height: 20px; 
+    }
+}
+
+@media only screen and (max-width:500px){
+    header{
+        padding: 0 10px;
+    }
 }
 

@@ -1,10 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="form-inline my-2 my-lg-1">
+    <div>
         <form method = "GET" value={{request.GET.search}}>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" name = "search" value={{request.GET.search}}>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search"><span class="glyphicon glyphicon-search"></span></button>
+            <div class = "search">
+                <input class="search__placeholder" type="search" placeholder="Search..." aria-label="Search" name = "search" value={{request.GET.search}}>
+                <button class="search__button" type="submit" name="submit" value="Search">
+                    <span class="glyphicon glyphicon-search"></span></button>
+            </div>
         </form>
     </div>
 
