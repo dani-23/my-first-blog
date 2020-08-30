@@ -1,6 +1,6 @@
 header {
     background-color: #24252A;
-    height: 70px;
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,11 +29,13 @@ header img {
 
 .nav__links{
     list-style: none;
+    padding:0px;
+    margin: 0px;
 }
 
 .nav__links li {
     display: inline;
-    padding: 0px 20px;
+    padding: 0px 15px;
 }
 
 .nav__links li a{
@@ -64,6 +66,10 @@ header img {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+}
+
+.login{
+    padding: 0 15px;
 }
 
 
@@ -167,42 +173,53 @@ hr{
 .search{
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content:flex-start;
 }
 
 .search__button{
     border: none;
+    background-color: white;
 }
 
 .search__placeholder{
-    width:50%;
-    border-radius:20px;
+    width:30%;
+    border-radius:25px;
 }
 
 @media only screen and (max-width:500px){
     h1, h2, h3, h4{
         font-size: 15px;
     }
-}
 
-@media only screen and (max-width:500px){
     header li, header a{
-        font-size: 10px;
+        font-size: 15px;
     }
-}
 
-@media only screen and (max-width:500px){
     .login__button, .logout__button{
         padding: 3px 10px;
         border-radius: 20px;
-        font-size: 10px; 
+        font-size: 15px; 
         line-height: 20px; 
     }
-}
 
-@media only screen and (max-width:500px){
     header{
+        align-items: center;
         padding: 0 10px;
     }
-}
 
+    .search{
+        justify-content:center;
+    }
+
+    .search__placeholder{
+        width:50%;
+    }
+
+    .nav__links li {
+        padding: 0px 5px;
+    }
+
+    .login{
+        padding: 5px;
+    }
+}

@@ -33,8 +33,9 @@
                     {% endif %}
                 </ul>
             </nav>
+
             {% if not user.is_authenticated %}
-                <div>
+                <div class = "login">
                     <a href="{% url 'login' %}"><button class = "login__button" >Login</button></a>
                 </div>
             {% endif %}
