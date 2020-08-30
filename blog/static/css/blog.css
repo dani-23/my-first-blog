@@ -14,7 +14,7 @@ header li, header a {
     font-variant: normal; 
     font-weight: 700; 
     line-height: 26.4px;
-    color: #edf0f1;
+    color: white;
     text-decoration: none;
 }
 
@@ -43,7 +43,7 @@ header img {
 }
 
 .nav__links li a:hover{
-    color: #0088a9;
+    color: #e84118;
     text-decoration: none;
 }
 
@@ -71,7 +71,6 @@ header img {
 .login{
     padding: 0 15px;
 }
-
 
 .logout__button{
     padding: 7px 20px;
@@ -166,24 +165,55 @@ hr{
   clear:both;
   display:block;
   width: 97%;               
-  background-color:#352f2f;
+  background-color:black;
   height: 1px;
 }
 
 .search{
+    width:50%;
     display: flex;
     align-items: center;
     justify-content:flex-start;
+    height:40px;
+    border-radius: 40px;
+    padding:10px;
 }
 
 .search__button{
-    border: none;
-    background-color: white;
+    color: #a02101;
+    float:right;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    background: #24252A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search__button:focus{
+    outline:none;
 }
 
 .search__placeholder{
-    width:30%;
-    border-radius:25px;
+    background-color: white;
+    border:none;
+    height:40px;
+    border-radius: 40px;
+    outline:none;
+    float:left;
+    padding:0;
+    color:white;
+    font-size: 16px;
+    transition: 0.4s;
+    width:0;
+}
+
+.search:hover > .search__placeholder{
+    width: 80%;
+    padding:0 6px;
+    border-radius: 40px;
+    background-color: #24252A;
 }
 
 @media only screen and (max-width:500px){
@@ -208,11 +238,16 @@ hr{
     }
 
     .search{
+        width: 100%;
         justify-content:center;
     }
 
     .search__placeholder{
-        width:50%;
+        width:0;
+    }
+
+    .search__button:hover > .search__placeholder{
+        width: 80%;
     }
 
     .nav__links li {
