@@ -242,14 +242,6 @@ hr{
         justify-content:center;
     }
 
-    .search__placeholder{
-        width:0;
-    }
-
-    .search__button:hover > .search__placeholder{
-        width: 80%;
-    }
-
     .nav__links li {
         padding: 0px 5px;
     }
