@@ -185,6 +185,7 @@ hr{
     width:40px;
     height:40px;
     border-radius: 50%;
+    border-color: #24252A;
     background: #24252A;
     display: flex;
     justify-content: center;
